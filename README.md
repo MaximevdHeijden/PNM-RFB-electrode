@@ -139,7 +139,8 @@ The input parameters used in the algorithm are defined in this script. The input
       These scripts can be used to fit the pore network model to experimental polarization data, using a velocity independent or velocity dependent mass transfer correlation (see the scripts for the mass coefficient correlation). The pre-exponential and exponential factor of a possible LOCAL mass transfer correlation can be placed in the input dictionary. Fitting of the experimental data can occur through fitting the following parameters:
       1.	The conductivity
       2.	The mass transfer coefficient. **NOTE:** This is simply a factor multiplied by the calculated km. Application hereof to the velocity dependent mass transfer coefficient is then equal to fitting the pre-exponential factor of the correlation.
-      3.	The membrane resistance. **NOTE:** The membrane resistivity is computed through Pouillet’s law. Fitting the conductivity then also (partially) fits the membrane resistance.\
+      3.	The membrane resistance. **NOTE:** The membrane resistivity is computed through Pouillet’s law. Fitting the conductivity then also (partially) fits the membrane resistance.
+
 • **Fitting_script_OpenPNM:**\
 This fitting script allows you to load in a network and compute the fluid field within the fitting script with as only input a newtork from the "input" folder. Then, the pressure field is computed using OpenPNM physics (i.e, hydraulic conductance based on shape factors).\
 • **Fitting_script:**\
