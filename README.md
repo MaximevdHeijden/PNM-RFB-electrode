@@ -202,7 +202,7 @@ Before running the code, the following folders need to be created:\
 **NOTE:** Before starting, carefully check wether you have all the information to run the scripts (input data, networks, fitting parameters required etc.).
 
 ## Future research directions
-Although effective, the PNM can be further improved to better capture the electrode performance, which is discussed in the following [BLOG](https://maximevdheijden.github.io/2023/11/23/PNMprospects/).\
+Although effective, the PNM can be further improved to better capture the electrode performance, which is discussed in the following [BLOG](https://maximevdheijden.github.io/2023/11/23/PNMprospects/).
 
 ## Contribution
 PNM-RFB-electrode is developed using a wide range of open-source tools, including OpenPNM. The code has initially been developed as part of a PhD research project and two master projects, but further contributions are very welcome.  
