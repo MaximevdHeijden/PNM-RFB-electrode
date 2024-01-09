@@ -10,13 +10,13 @@ For the installation of OpenPNM from scratch:
 
 2.    Check pip installation (pip is the package manager of python) and install pipenv. First, open 'Anaconda prompt' via the Windows start menu. Check if pip is installed using:
 
-      ```python
+      ```
       python -m pip --version
       ```
 
       If pip is installed, install pipenv using:
 
-      ```python
+      ```
       python -m pip install --user pipenv
       ```
 
