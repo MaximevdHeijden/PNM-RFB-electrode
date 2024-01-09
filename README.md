@@ -1,6 +1,8 @@
 # Pore network modeling scripts
 ## About
-This repository contains pore network modeling approaches for the simulation of porous electrode microstructures for redox flow batteries which is for example used for the bottom-up design of electrode structures using a [genetic algorithm](https://github.com/MaximevdHeijden/GA-RFB-electrode). PNM-RFB-electrode is an open-source code written in Python using the open-source software OpenPNM.
+This repository contains pore network modeling approaches for the simulation of porous electrode microstructures for redox flow batteries which is for example used for the bottom-up design of electrode structures using a [genetic algorithm](https://github.com/MaximevdHeijden/GA-RFB-electrode).\
+The pore network model (PNM) that we developed is an effective computational model for simulating the performance of porous electrodes for a wide variety of operating conditions. As the real electrode can be translated to a pore network, the electrode microstructure can be correlated to the performance, and structure-performance relationships can be elucidated to guide the design of novel porous electrodes for electrochemical applications.\
+PNM-RFB-electrode is an open-source code written in Python using the open-source software OpenPNM.
 
 ## Installation
 The scripts and functions in this folder use OpenPNM version 3.0.0. which can be installed using [OpenPNM documentation](https://openpnm.org/installation.html) and are written for Windows. To change the current version to OpenPNM version 3.0.0, [Gitkraken](https://www.gitkraken.com/) can be used. Before running the code, minor adjustments need to be made to the OpenPNM documentation, which can be found in the “READ Me – OpenPNM changes” file.
@@ -198,6 +200,9 @@ Before running the code, the following folders need to be created:\
 •	**output:** for saving the output data from the scripts.
 
 **NOTE:** Before starting, carefully check wether you have all the information to run the scripts (input data, networks, fitting parameters required etc.).
+
+## Future research directions
+Although effective, the PNM can be further improved to better capture the electrode performance, which is discussed in the following [BLOG](https://maximevdheijden.github.io/2023/11/23/PNMprospects/).\
 
 ## Contribution
 PNM-RFB-electrode is developed using a wide range of open-source tools, including OpenPNM. The code has initially been developed as part of a PhD research project and two master projects, but further contributions are very welcome.  
