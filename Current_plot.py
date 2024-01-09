@@ -8,7 +8,7 @@ from matplotlib import colors
 import openpyxl
 import pandas as pd
 import pdb                                                  
-import Costum_network_plotting as cn
+import Custom_network_plotting as cn
 
 '''
 Plot current density over specified axis:

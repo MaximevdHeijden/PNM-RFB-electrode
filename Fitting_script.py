@@ -111,9 +111,9 @@ import openpyxl
 import os
 import Custom_functions_km as cf
 import sys
-import Costum_network as cn
-import Costum_functions_transport as cf_trans
-import Costum_functions_phase as cf_phase
+import Custom_network as cn
+import Custom_functions_transport as cf_trans
+import Custom_functions_phase as cf_phase
 import Custom_functions_pressure_fitting as cf_pres_fit  
 
 # Setting import network directory
@@ -219,31 +219,31 @@ for NrNetwork, file in enumerate(file_vec):
 
         anolyte = op.phase.Water(network=net_a, name='anolyte')
         anolyte.add_model(propname = 'pore.electrical_conductivity',                # Anolyte electrical conductivity [S m-1]
-                  model = cf_phase.costum_electrical_conductivity_fit,
+                  model = cf_phase.custom_electrical_conductivity_fit,
                   conductivity_fitted = Conductivity_value)                  
         anolyte.add_model(propname = 'pore.viscosity',                              # Anolyte viscosity [Pa s]   
-                          model = cf_phase.costum_viscosity,
+                          model = cf_phase.custom_viscosity,
                           parameter_script = param, prop = 'anolyte_viscosity')
         anolyte.add_model(propname = 'pore.density',                                # Anolyte density [kg m-3]  
-                          model = cf_phase.costum_density,
+                          model = cf_phase.custom_density,
                           parameter_script = param, prop = 'anolyte_density')
         anolyte.add_model(propname = 'pore.diffusivity',                            # Anolyte active species diffusivity in electrolyte [m2 s-1]
-                          model = cf_phase.costum_diffusivity,
+                          model = cf_phase.custom_diffusivity,
                           parameter_script = param, prop = 'D_a')            
         anolyte['pore.molecular_weight'] = 0.01802
 
         catholyte = op.phase.Water(network=net_c, name='catholyte')
         catholyte.add_model(propname = 'pore.electrical_conductivity',              # Catholyte electrical conductivity [S m-1]
-                          model = cf_phase.costum_electrical_conductivity_fit,
+                          model = cf_phase.custom_electrical_conductivity_fit,
                           conductivity_fitted = Conductivity_value)  
         catholyte.add_model(propname = 'pore.diffusivity',                          # Catholyte active species diffusivity in electrolyte [m2 s-1]
-                          model = cf_phase.costum_diffusivity,
+                          model = cf_phase.custom_diffusivity,
                           parameter_script = param, prop = 'D_c')           
         catholyte.add_model(propname = 'pore.viscosity',                            # Catholyte viscosity [Pa s]
-                          model = cf_phase.costum_viscosity,
+                          model = cf_phase.custom_viscosity,
                           parameter_script = param, prop = 'catholyte_viscosity')                 
         catholyte.add_model(propname = 'pore.density',                              # Catholyte density [kg m-3]  
-                          model = cf_phase.costum_density,
+                          model = cf_phase.custom_density,
                           parameter_script = param, prop = 'catholyte_density')
         catholyte['pore.molecular_weight'] = 0.01802
         
@@ -294,7 +294,7 @@ for NrNetwork, file in enumerate(file_vec):
             cf_pres_fit.Mass_transfer_coefficient(net_a, anolyte, 1, Velocity_dependent_km, 1, param)
         
         #---------------------Adding phase physics------------------------#
-        # Costum functions (copy of those used in OpenPNM V2.2.0) are used
+        # Custom functions (copy of those used in OpenPNM V2.2.0) are used
         # due to discrepencies w.r.t. the diameter of the throat exceeding
         # that of the pores from the network extraction.
         
@@ -456,11 +456,11 @@ for NrNetwork, file in enumerate(file_vec):
             # Re-assign fitting conductivity to anolyte and catholyte
             Conductivity_fitted_value = param['anolyte_conductivity'] * Conductivity_factor
             anolyte.add_model(propname = 'pore.electrical_conductivity',                # Anolyte electrical conductivity [S m-1]
-                              model = cf_phase.costum_electrical_conductivity_fit,
+                              model = cf_phase.custom_electrical_conductivity_fit,
                               conductivity_fitted = Conductivity_fitted_value)    
             
             catholyte.add_model(propname = 'pore.electrical_conductivity',              # Catholyte electrical conductivity [S m-1]
-                              model = cf_phase.costum_electrical_conductivity_fit,
+                              model = cf_phase.custom_electrical_conductivity_fit,
                               conductivity_fitted = Conductivity_fitted_value) 
             anolyte.regenerate_models()
             catholyte.regenerate_models()    

@@ -8,7 +8,7 @@ from matplotlib import colors
 import openpyxl
 import pandas as pd
 import pdb                                                  
-import Costum_network_plotting as cn
+import Custom_network_plotting as cn
 
 # Load in network and phase via csv file. Note that only the network can be loaded
 # in with .csv files. We thus copy the phase properties to the network, and all

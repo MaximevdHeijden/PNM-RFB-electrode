@@ -21,7 +21,7 @@ OpenPNM v3.0.0 cannot load projects (.pnm) from OpenPNM v2.2.0. Hence, networks
 will be imported via .CSV files. To enable this import add the following to 
 op.io.network_from_csv: in a = read_table add as argument: low_memory=False. 
 Further, labels and properties will be mixed in the extracted network, so a new
-(copy) of the network is created in the module costum_network. 
+(copy) of the network is created in the module Custom_network. 
 
 Input: 
     1. .csv file of the extracted network
@@ -43,8 +43,8 @@ from skimage import util
 import openpyxl
 import matplotlib.pyplot as plt
 import os
-import Costum_network as cn
-import Costum_functions as cf
+import Custom_network as cn
+import Custom_functions as cf
 
 ############################# Network alterations functions ###################
 ToBeTrimmed = 0                             # Trim unrealstic larges pores. 

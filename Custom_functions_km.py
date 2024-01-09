@@ -405,7 +405,7 @@ def Membrane_conductivity(Electrolyte_conductivity, param):
     return membrane_resistivity
 
 
-def costum_diffusivity(target , prop):
+def custom_diffusivity(target , prop):
     Diff = prop
     
     return Diff    

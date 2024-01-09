@@ -72,8 +72,8 @@ import numpy as np
 import inputDictTEMPO as inputDict  
 import os
 import Custom_functions_km as cf
-import Costum_functions_transport as cf_trans
-import Costum_functions_phase as cf_phase
+import Custom_functions_transport as cf_trans
+import Custom_functions_phase as cf_phase
 import Custom_functions_pressure_fitting as cf_pres_fit
 import time
 import openpyxl
@@ -135,16 +135,16 @@ for NrNetwork, file in enumerate(file_vec):
     Conductivity_value = param['anolyte_conductivity']
     catholyte = op.phase.Water(network=net_c, name='catholyte')  
     catholyte.add_model(propname = 'pore.electrical_conductivity',              # Catholyte electrical conductivity [S m-1]
-                      model = cf_phase.costum_electrical_conductivity_fit,
+                      model = cf_phase.custom_electrical_conductivity_fit,
                       conductivity_fitted = Conductivity_value) 
     catholyte.add_model(propname = 'pore.diffusivity',                          # Catholyte active species diffusivity in electrolyte [m2 s-1]
-                      model = cf_phase.costum_diffusivity,
+                      model = cf_phase.custom_diffusivity,
                       parameter_script = param, prop = 'D_c')           
     catholyte.add_model(propname = 'pore.viscosity',                            # Catholyte viscosity [Pa s]
-                      model = cf_phase.costum_viscosity,
+                      model = cf_phase.custom_viscosity,
                       parameter_script = param, prop = 'catholyte_viscosity')                 
     catholyte.add_model(propname = 'pore.density',                              # Catholyte density [kg m-3]  
-                      model = cf_phase.costum_density,
+                      model = cf_phase.custom_density,
                       parameter_script = param, prop = 'catholyte_density')
     catholyte['pore.molecular_weight'] = 0.01802
     

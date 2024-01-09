@@ -1,5 +1,5 @@
 """
-Costum function module containing the following functions:
+Custom function module containing the following functions:
     1. Flow_shape_factors_ball_and_stick: Computing the shape (size) factors
        for hydraulic conductance.
     2. Hydraulic_conductance_Hagen_Poiseuille: Computing the Hydraulic 
@@ -10,8 +10,6 @@ Costum function module containing the following functions:
        used in Stokesflow.
     5. Advection_diffusion: Calculate the advective-diffusive conductance of
        conduits in network. 
-    6. Electrical_conductance_series_resistors: Calculate the electrical conductance 
-       of conduits in network.
 
 These functions are retrieved from older OpenPNM versions (such as OpenPNM version 2.6)
 """
@@ -57,8 +55,8 @@ def Flow_shape_factors_ball_and_stick(target, pore_area='pore.area',
     Returns
     -------
     SF : dictionary
-        Dictionary containing conduit shape factors to be used in Hagen-
-        Poiseuille hydraulic conductance model. Shape factors are accessible
+        Dictionary containing conduit shape factors to be used in hagen-
+        poiseuille hydraulic conductance model. Shape factors are accessible
         via the keys: 'pore1', 'pore2' and 'throat'.
 
     Notes
@@ -128,7 +126,7 @@ def Hydraulic_conductance_Hagen_Poiseuille(target,
                      conduit_shape_factors='throat.flow_shape_factors'):
     r"""
     Calculate the hydraulic conductance of conduits in network, where a
-    conduit is ( 1/2 pore - full throat - 1/2 pore ). 
+    conduit is ( 1/2 pore - full throat - 1/2 pore ). See the notes section.
 
     Parameters
     ----------
@@ -220,8 +218,8 @@ def Hydraulic_conductance_Hagen_Poiseuille(target,
     g1[m1] = A1[m1]**2 / (8*pi*D1*L1)[m1]
     g2[m2] = A2[m2]**2 / (8*pi*D2*L2)[m2]
     gt[mt] = At[mt]**2 / (8*pi*Dt*Lt)[mt]
-    
     # Apply shape factors and calculate the final conductance
+    
     return (1/gt/SFt + 1/g1/SF1 + 1/g2/SF2)**(-1)
 
 
@@ -332,7 +330,7 @@ def Diffusive_conductance_mixed_diffusion(
     r"""
     Calculate the diffusive conductance of conduits in network, where a
     conduit is ( 1/2 pore - full throat - 1/2 pore ), assuming Knudsen
-    diffusivity. 
+    diffusivity. See the notes section.
 
     Parameters
     ----------
@@ -428,8 +426,8 @@ def Diffusive_conductance_mixed_diffusion(
     g1 = (D1e * A1) / L1
     g2 = (D2e * A2) / L2
     gt = (Dte * At) / Lt
-    
     # Apply shape factors and calculate the final conductance
+    
     return (1/gt/SFt + 1/g1/SF1 + 1/g2/SF2)**(-1)
 
 
@@ -441,7 +439,7 @@ def Advection_diffusion(target,
            s_scheme='powerlaw'):
     r"""
     Calculate the advective-diffusive conductance of conduits in network, where
-    a conduit is ( 1/2 pore - full throat - 1/2 pore ). 
+    a conduit is ( 1/2 pore - full throat - 1/2 pore ). See the notes section.
 
     Parameters
     ----------
@@ -549,7 +547,7 @@ def Electrical_conductance_series_resistors(target,
                      conduit_shape_factors='throat.poisson_shape_factors'):
     r"""
     Calculate the electrical conductance of conduits (throat.electrical_conductance) 
-    in network, where a conduit is ( 1/2 pore - full throat - 1/2 pore ). 
+    in network, where a conduit is ( 1/2 pore - full throat - 1/2 pore ). See the notes section.
 
     Parameters
     ----------
@@ -640,6 +638,10 @@ def Electrical_conductance_series_resistors(target,
     g1[m1] = (D1*A1)[m1] / L1[m1]
     g2[m2] = (D2*A2)[m2] / L2[m2]
     gt[mt] = (Dt*At)[mt] / Lt[mt]
-    
     # Apply shape factors and calculate the final conductance
     return (1/gt/SFt + 1/g1/SF1 + 1/g2/SF2)**(-1)
+
+
+def custom_diffusivity(target , prop):
+    Diff = prop
+    return Diff    
