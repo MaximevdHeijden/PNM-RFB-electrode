@@ -158,7 +158,8 @@ The input parameters used in the algorithm are defined in this script. The input
       1.    Search for "net." and replace with nothing (empty bar). Do the same for "catholyte_vtk." or "anolyte_vtk.", depending if it is the cathode or anode electrode.
       2.    Use the 'Text to Columns' function in Excel with separated by commas.
       3.    Delete the last columns (DT - EA, with repetitions of pore.velocity_components_OpenPNM_odd_network[0,1,2], pore.velocity_components_odd_network[0,1,2], pore.velocity_magnitude_OpenPNM_odd_network[0], and pore.velocity_magnitude_odd_network[0]) and save the new version of the .csv file.
-      4.    Now the scripts should work.\
+      4.    Now the scripts should work.
+
       •     **Costum_network_plotting:**\
             Functions required to create a new network to correctly re-assign the properties and the labels of the network.\
       •	**Current_plot:**\
@@ -174,7 +175,7 @@ After installing OpenPNM version 3.0.0. and making the required adjustments, the
 The following properties can be adjusted:\
 •	Electrolyte chemistry: in the inputDict, the chemistry dependent parameters can be changed (e.g., diffusion coefficient, viscosity, concentration).\
 •	Operation conditions: in inputDict, the operating conditions can be changes (e.g., total electrode lenght, membrane properties, cell potential settings).\
-•	Fitting parameters: in the inputDict, the mass transfer coefficients (C1 and C2) can be defined, which can be obtained from literature or experiments.
+•	Fitting parameters: in the inputDict, the mass transfer coefficients (C1 and C2) can be defined, which can be obtained from literature or experiments.\
 •	Flow field type: in the scripts, the flow field design can be changed where Flow_field == 0 simulates a flow-through flow field, and Flow_field == 1 an interdigitated flow field.\
 •	Fitting parameters: in the main scripts, the mass transfer coefficient, membrane resistance, and conductivity factors can be altered.\
 •	Pressure drop physics: in the main scripts, you can select wether you want to use OpenPNM physics or physics based on the mechanical energy balance.\
@@ -192,12 +193,14 @@ Before running the code, the following folders need to be created:\
 •	**input:** this folder contains the networks that will be simulated for the following scripts: Fitting_script_OpenPNM, PNM_main_V3_Final_OpenPNM, Flow_field_main, Local_km_fitting_script_initialize_fluid_field, and Pressure_fitting_script. This folder should contain the following files: the extracted network in .pnm format, .xlsx files with the experimental data necessary for the fitting of the pressure drop, mass transfer coefficient, and polarization curve.\
 •	**Input_networks:** this folder contains the adjusted networks with scaled throat diameters (which is the output of the Flow_field_main script (.pnm files with scaled throat diameters)) that will be simulated for the following scripts: Fitting_script, PNM_main_V3_Final, and Local_km_fitting_script_load_in_fluid_field.\
 •	**Input_Fluid_field:** for loading in the fluid field (which is the output of the Flow_field_main script (.pnm files)) for the scripts: Fitting_script, PNM_main_V3_Final, and Local_km_fitting_script_load_in_fluid_field.\
+•	**input_plots:** the altered .csv file to be plotted should be located in this folder.\
+•	**plots:** the plots will be outputted in this folder.\
 •	**output:** for saving the output data from the scripts.
 
 **NOTE:** Before starting, carefully check wether you have all the information to run the scripts (input data, networks, fitting parameters required etc.).
 
 ## Contribution
-PNM-RFB-electrode is developed using a wide range of open-source tools, including OpenPNM. The code has initially been developed as part of a PhD research project, but further contributions are very welcome.  
+PNM-RFB-electrode is developed using a wide range of open-source tools, including OpenPNM. The code has initially been developed as part of a PhD research project and two master projects, but further contributions are very welcome.  
 
 ## Publications and citations
 The code has been developed and described in the following two publications and PhD thesis. Please cite them when referring to the algorithm: 
