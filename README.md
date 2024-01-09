@@ -77,15 +77,15 @@ OpenPNM->Algorithm->generic_transport and go the function “def_set_BC” and c
 ## Documentation
 This repository contains several scripts that will be used when extracting networks, running the code, or for post-processing, including:
 1.    Function scripts that are used but don't have to be altered to run your simulations:\
-      •	**Costum_functions_phase:**\
+      •	**Custom_functions_phase:**\
             Additional phase functions used are defined in this script as OpenPNM automatically assigns water models to update the anolyte and catholyte properties.\
-      •	**Costum_functions_transport:**\
+      •	**Custom_functions_transport:**\
             Additional functions that are retrieved from older OpenPNM versions but are required for the simulations to run.\
-      •	**Costum_network:**\
+      •	**Custom_network:**\
             Functions required to create a new network to correctly re-assign the properties and the labels of the network.\
-      •	**Costum_functions_km:**\
+      •	**Custom_functions_km:**\
             Additional functions defined to run the model including the definition of the boundary pores, formulation of the Butler-Volmer equation, the convergence criteria, overpotentials, pressure drop, flowrate, and conductivity.\
-      •	**Costum_functions_pressure_fitting:**\
+      •	**Custom_functions_pressure_fitting:**\
             Additional functions including the definitions of the throat flowrate and hydraulic conductance, pore and throat velocities, and mass transfer coefficients.
 
 2.    Input dictionary defining your operating conditions and electrolyte properties:\
@@ -94,11 +94,11 @@ The input parameters used in the algorithm are defined in this script. The input
 
 3.    Folder "Network_Extraction" with the network extraction scripts:\
       In this folder, the scripts required for the network extraction are provided, including:\
-      •	**Costum_functions:**\
+      •	**Custom_functions:**\
             Additional functions that are retrieved from older OpenPNM versions but are required for the simulations to run.\
-      •	**Costum_network:**\
+      •	**Custom_network:**\
             Functions required to create a new network to correctly re-assign the properties and the labels of the network.\
-      •	**Costum_functions_pressure_fitting:**\
+      •	**Custom_functions_pressure_fitting:**\
             Additional functions including the definitions of the throat flowrate and hydraulic conductance, pore and throat velocities, and mass transfer coefficients.\
       •     **Network_Extraction_SNOW1:**\
             This script is used to extract the pore network from tif images. **NOTE:** in order to run the network extraction scripts with SNOW1, several steps needs to be taken, which are explained in README-NetworkExtraction.\
@@ -162,7 +162,7 @@ The input parameters used in the algorithm are defined in this script. The input
       3.    Delete the last columns (DT - EA, with repetitions of pore.velocity_components_OpenPNM_odd_network[0,1,2], pore.velocity_components_odd_network[0,1,2], pore.velocity_magnitude_OpenPNM_odd_network[0], and pore.velocity_magnitude_odd_network[0]) and save the new version of the .csv file.
       4.    Now the scripts should work.
 
-      •     **Costum_network_plotting:**\
+      •     **Custom_network_plotting:**\
             Functions required to create a new network to correctly re-assign the properties and the labels of the network.\
       •	**Current_plot:**\
             Script to visualize the current profiles through the electrode.\
