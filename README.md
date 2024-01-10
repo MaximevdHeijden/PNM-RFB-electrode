@@ -33,24 +33,19 @@ For the installation of OpenPNM from scratch:
                   
       •	Enter the root folder of openPNM by using the "cd OpenPNM" command.\
       •	Enter the following command and note the space between the dot and e is not a typo:
-       
-            ```
+            
             pip install --no-deps -e .
-            ```
-
+            
       •	Enter the following commands to install the openpnm dependencies:
        
-            ```
             conda install --file requirements/conda.txt -c conda-forge
             pip install -e .
-            ```
 
       •	Install [Gitkraken](https://www.gitkraken.com/). Gitkraken allows you to switch between different versions of OpenPNM. In Gitkraken open (select) the installed OpenPNM folder. Search for version 3.0.0 and select “Check out this commit”. Your editing program will automatically refer to this version.
 
 4.    You can now run the OpenPNM code files. It could be that you get errors due to missing software packages, the most common ones are discussed below:\
       •	You probably need to install the following packages: docrep, chemicals, pyamg, rich, thermo, transforms3d, pypardiso, and lmfit, using pip by entering the following commands in AnacondaPrompt:
  
-            ```
             pip install docrep
             pip install chemicals
             pip install pyamg
@@ -58,13 +53,10 @@ For the installation of OpenPNM from scratch:
             pip install transforms3d
             pip install pypardiso
             pip install lmfit
-            ```
 
       •     It could be that the installed numpy version is not compatible with the code. This can be solved by changing the numpy version using:
        
-            ```
             pip install numpy==1.23.5
-            ```
 
       •	numba.errors. This error cannot be solved by installing packages, but by disabling the module. Follow the path openpnm->algorithms->InvasionPercolation and comment out "from numba.errors import NumbaPendingDeprecationWarning".\
       •     Boundary conditions issue. When the program can is ran, the following error can pop up: "Another boundary condition was detected in some of the locations recieved". The solution is to comment out an if-loop. Follow the path 
@@ -114,14 +106,12 @@ The input parameters used in the algorithm are defined in this script. The input
             Pressure drop fitting script using the conduit conductance model to obtain the fitting values (contraction curvature, expansion curvature, and throat effective aspect ratio parameters) over a range of superficial inlet velocities that can be used in your simulations. This script performs the hydraulic callibration of the pore network model where the overall pressure drop is fitted to the experimentally obtained pressure drop using the least squares scheme.\
             **NOTE:** sometimes there is a convergence issue of the stokesflow algorithm. This often arises because a few pores are not converging (e.g., three pores) in the fluid field computation. These pores can be trimmed from the network, but this is not necessary as the results from the “unconverged” stokesflow were found to be the same as those where these few pores were trimmed from the network. The index of these pores can be located based on the change of pore pressure between consecutive iterations of the fluid field computation. This difference can be found by running the script in DEBUG MODE and set a debug point in the "OpenPNM – algorithms – transport function" script (altered version) in "_run_special" on the line "phase['pore.pressure'] = self.x.copy()". First run for a few iterations for the computation to stabilize (e.g., 5 times), then run the below commands in the console:
 
-            ```
             net = self.project['net']                          
             internal_pores = net.pores('internal')
             Pres_old_int = x0[internal_pores]
             Pres_new_int = x_new[internal_pores]
             rel_pres_diff = np.abs((Pres_new_int - Pres_old_int)/Pres_new_int)
             print(np.where(rel_pres_diff > rel_pres_diff.max()/4))
-            ```
 
         Here we compute the relative pore pressure difference between two consecutive iterations. We then print the index of those pores with a relative difference greater than a quarter of the maximum hereof (though this might require refinement on your case). Often the same pore index is found between consecutive iterations. Trimming of these few pores in the script “Flow_field_main” after loading in the original network then avoids any non-convergence warnings.\
       •	**Flow_field_main:**\
