@@ -5,7 +5,7 @@ The pore network model (PNM) that we developed is an effective computational mod
 PNM-RFB-electrode is an open-source code written in Python using the open-source software OpenPNM.
 
 ## Installation
-The scripts and functions in this folder use OpenPNM version 3.0.0. which can be installed using [OpenPNM documentation](https://openpnm.org/installation.html) and are written for Windows. To change the current version to OpenPNM version 3.0.0, [Gitkraken](https://www.gitkraken.com/) can be used. Before running the code, minor adjustments need to be made to the OpenPNM documentation, which can be found in the “READ Me – OpenPNM changes” file.
+The scripts and functions in this folder use OpenPNM version 3.0.0. which can be installed using [OpenPNM documentation](https://openpnm.org/installation.html) and are written for Windows. Before running the code, minor adjustments need to be made to the OpenPNM documentation, which can be found in the “READ Me – OpenPNM changes” file.
 For the installation of OpenPNM from scratch:
 
 1.	Download [Anaconda](https://www.anaconda.com/download/) and follow the installment procedure. The open-source Anaconda Distribution is the easiest way to perform Python/R data science and machine learning on Linux, Windows, and Mac OS X. Python is used as the programming language in this project and Spyder can be used as editor.
@@ -28,11 +28,9 @@ For the installation of OpenPNM from scratch:
       •	First make a repository (folder) in which you want to save the code and copy the directory adress.\
       •	Open Anaconda Prompt and go to the folder by using the "cd" command.\
       •	Clone the repo via the command:
- 
-            ```
+               
             git clone https://github.com/PMEAL/OpenPNM
-            ```
-
+                  
       •	Enter the root folder of openPNM by using the "cd OpenPNM" command.\
       •	Enter the following command and note the space between the dot and e is not a typo:
        
@@ -49,7 +47,7 @@ For the installation of OpenPNM from scratch:
 
       •	Install [Gitkraken](https://www.gitkraken.com/). Gitkraken allows you to switch between different versions of OpenPNM. In Gitkraken open (select) the installed OpenPNM folder. Search for version 3.0.0 and select “Check out this commit”. Your editing program will automatically refer to this version.
 
-4.    You can now run the OpenPNM code files. It could be that you get errors due to missing software packages, the most common ones are discussed below and the other errors can be solved using Google search:\
+4.    You can now run the OpenPNM code files. It could be that you get errors due to missing software packages, the most common ones are discussed below:\
       •	You probably need to install the following packages: docrep, chemicals, pyamg, rich, thermo, transforms3d, pypardiso, and lmfit, using pip by entering the following commands in AnacondaPrompt:
  
             ```
