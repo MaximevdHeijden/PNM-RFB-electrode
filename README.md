@@ -41,9 +41,11 @@ For the installation of OpenPNM from scratch:
             conda install --file requirements/conda.txt -c conda-forge
             pip install -e .
 
-      •	Install [Gitkraken](https://www.gitkraken.com/). Gitkraken allows you to switch between different versions of OpenPNM. In Gitkraken open (select) the installed OpenPNM folder. Search for version 3.0.0 and select “Check out this commit”. Your editing program will automatically refer to this version.
+      •	Switch to version 3.0.0 of OpenPNM using:
 
-4.    You can now run the OpenPNM code files. It could be that you get errors due to missing software packages, the most common ones are discussed below:\
+            git checkout v3.0.0
+
+5.    You can now run the OpenPNM code files. It could be that you get errors due to missing software packages, the most common ones are discussed below:\
       •	You probably need to install the following packages: docrep, chemicals, pyamg, rich, thermo, transforms3d, pypardiso, and lmfit, using pip by entering the following commands in AnacondaPrompt:
  
             pip install docrep
@@ -62,7 +64,7 @@ For the installation of OpenPNM from scratch:
       •     Boundary conditions issue. When the program can is ran, the following error can pop up: "Another boundary condition was detected in some of the locations recieved". The solution is to comment out an if-loop. Follow the path 
 OpenPNM->Algorithm->generic_transport and go the function “def_set_BC” and comment out the following if-loop "if np.intersect1d(pores, BC_locs).size".
 
-5.    Now the codes should work.
+6.    Now the codes should work.
 
 ## Documentation
 This repository contains several scripts that will be used when extracting networks, running the code, or for post-processing, including:
