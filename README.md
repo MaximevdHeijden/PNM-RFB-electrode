@@ -46,19 +46,9 @@ For the installation of OpenPNM from scratch:
             git checkout v3.0.0
 
 5.    You can now run the OpenPNM code files. It could be that you get errors due to missing software packages, the most common ones are discussed below:\
-      •	You probably need to install the following packages: docrep, chemicals, pyamg, rich, thermo, transforms3d, pypardiso, and lmfit, using pip by entering the following commands in AnacondaPrompt:
+      •	You need to install some dependencies using for example pip by entering the following command in AnacondaPrompt:
  
-            pip install docrep
-            pip install chemicals
-            pip install pyamg
-            pip install thermo
-            pip install transforms3d
-            pip install pypardiso
-            pip install lmfit
-
-      •     It could be that the installed numpy version is not compatible with the code. This can be solved by changing the numpy version using:
-       
-            pip install numpy==1.23.5
+            pip install -r requirements.txt
 
       •	numba.errors. This error cannot be solved by installing packages, but by disabling the module. Follow the path openpnm->algorithms->InvasionPercolation and comment out "from numba.errors import NumbaPendingDeprecationWarning".\
       •     Boundary conditions issue. When the program can is ran, the following error can pop up: "Another boundary condition was detected in some of the locations recieved". The solution is to comment out an if-loop. Follow the path 

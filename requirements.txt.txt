@@ -1,0 +1,8 @@
+docrep
+chemicals
+pyamg
+thermo
+transforms3d
+pypardiso
+lmfit
+numpy==1.23.5
