@@ -24,7 +24,7 @@ In case you switch between OpenPNM v3.0.0 to OpenPNM v2.2.0 you often run into p
     •   An .tif overlay image for visualization in Paraview.
 
 5.	Changing the file data type. The extracted .pnm network created in step 4 can be used ONLY for OpenPNM v2.2.0. OpenPNM v3.0.0. cannot load in the .pnm network created in step 4 due to missing geometry and physics modules. A network which can be used in OpenPNM v3.0.0 is created from the .csv file created in step 4. This .csv is loaded into the script the script “Netwerk_Properties_V3_with_V2Data”, which outputs a .pnm file which can be used in OpenPNM v3.0.0.\
-    The .csv file, however, needs to be altered before loading it into the script “Netwerk_Properties_V3_with_V2Data”. Only the first row of the .csv file needs to be altered (where the strings are stored). Press ctrl+F, select the replace functionality and enter  “network | net_01 | “ (**NOTE:** the space at the end is NOT a typo). Leave the “Replace with” bar blanc and select “Replace all”.
+    The .csv file, however, needs to be altered before loading it into the script “Netwerk_Properties_V3_with_V2Data”. Only the first row of the .csv file needs to be altered (where the strings are stored). Press ctrl+F, select the replace functionality and enter  “network | net_01 | “ (**NOTE:** the space at the end is NOT a typo). Leave the “Replace with” bar blank and select “Replace all”.
 
 6.	Creating the network for OpenPNM v3.0.0 from the altered .csv file. First, change to OpenPNM v3.0.0 (using git checkout v3.0.0), but leave the Porespy version unaltered. Then open the script “Netwerk_Properties_V3_with_V2Data” and change the input file name of the altered .csv file, the name of the original .tif file, and the voxel size.
 
