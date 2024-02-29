@@ -25,7 +25,7 @@ For the installation of OpenPNM from scratch:
       You can get a warning that the installed packages are not on your PATH. Copy this path, go to your windows start menu and type in “Edit the system environment variables”, select “environment variables”, click on Path and select “Edit”. Then click “new” and paste the path you just copied.
 
 3.    Install the latest version of [OpenPNM](https://openpnm.org/installation.html), following the “hard (but correct way)” will allow you to install the developing code:\
-      •	First make a repository (folder) in which you want to save the code and copy the directory adress.\
+      •	First make a repository (folder) in which you want to save the code and copy the directory address.\
       •	Open Anaconda Prompt and go to the folder by using the "cd" command.\
       •	Clone the repo via the command:
                
@@ -51,7 +51,7 @@ For the installation of OpenPNM from scratch:
             pip install -r requirements.txt
 
       •	numba.errors. This error cannot be solved by installing packages, but by disabling the module. Follow the path openpnm->algorithms->InvasionPercolation and comment out "from numba.errors import NumbaPendingDeprecationWarning".\
-      •     Boundary conditions issue. When the program can is ran, the following error can pop up: "Another boundary condition was detected in some of the locations recieved". The solution is to comment out an if-loop. Follow the path 
+      •     Boundary conditions issue. When the program can is ran, the following error can pop up: "Another boundary condition was detected in some of the locations received". The solution is to comment out an if-loop. Follow the path 
 OpenPNM->Algorithm->generic_transport and go the function “def_set_BC” and comment out the following if-loop "if np.intersect1d(pores, BC_locs).size".
 
 6.    Now the codes should work.
@@ -88,14 +88,14 @@ The input parameters used in the algorithm are defined in this script. The input
             This script computes the pore size distribution, porosity profiles, and permeability of the extracted network. Furthermore, .pnm and .vtk files are created which can be used for the pore network model simulations and for visualization in Paraview, respectively.
 
       Before running the code, the following folders need to be created:\
-      •	**input:** this folder contains the networks that will be extracted and the sdjusted .csv file required for the network properties script.\
+      •	**input:** this folder contains the networks that will be extracted and the adjusted .csv file required for the network properties script.\
       •	**output:** this folder contains the output of the network extraction including .csv, .pnm, .vtk, and .tif files of the extracted network.\
       •	**output_version_3_0:** this folder contains the output of the network properties script including a .pnm, .vtk, and .xlsx files which can be used for pore network simulations, visualization, and contain network properties, respectively.
 
 4.    Scripts for the pressure drop correction:\
       These scripts perform the role of hydraulic calibration and obtaining the fluid field (pressure field, velocity field) inside the electrode:\
       •	**Pressure_fitting_script:**\
-            Pressure drop fitting script using the conduit conductance model to obtain the fitting values (contraction curvature, expansion curvature, and throat effective aspect ratio parameters) over a range of superficial inlet velocities that can be used in your simulations. This script performs the hydraulic callibration of the pore network model where the overall pressure drop is fitted to the experimentally obtained pressure drop using the least squares scheme.\
+            Pressure drop fitting script using the conduit conductance model to obtain the fitting values (contraction curvature, expansion curvature, and throat effective aspect ratio parameters) over a range of superficial inlet velocities that can be used in your simulations. This script performs the hydraulic calibration of the pore network model where the overall pressure drop is fitted to the experimentally obtained pressure drop using the least squares scheme.\
             **NOTE:** sometimes there is a convergence issue of the stokesflow algorithm. This often arises because a few pores are not converging (e.g., three pores) in the fluid field computation. These pores can be trimmed from the network, but this is not necessary as the results from the “unconverged” stokesflow were found to be the same as those where these few pores were trimmed from the network. The index of these pores can be located based on the change of pore pressure between consecutive iterations of the fluid field computation. This difference can be found by running the script in DEBUG MODE and set a debug point in the "OpenPNM – algorithms – transport function" script (altered version) in "_run_special" on the line "phase['pore.pressure'] = self.x.copy()". First run for a few iterations for the computation to stabilize (e.g., 5 times), then run the below commands in the console:
 
             net = self.project['net']                          
@@ -113,7 +113,7 @@ The input parameters used in the algorithm are defined in this script. The input
 5.    Scripts for the mass transfer coefficient correction:\
       These scripts fit the pre-exponential and exponential factors of a local mass transfer correlation to a global mass transfer correlation (obtained from e.g., literature or limiting current density experiments).\
       •	**Local_km_fitting_script_initialize_fluid_field:**\
-            This fitting script allows you to load in a network and compute the fluid field within the fitting script with as only input a newtork from the "input" folder. Then, the pressure field is computed using OpenPNM physics (i.e., hydraulic conductance based on shape factors).\
+            This fitting script allows you to load in a network and compute the fluid field within the fitting script with as only input a network from the "input" folder. Then, the pressure field is computed using OpenPNM physics (i.e., hydraulic conductance based on shape factors).\
       •	**Local_km_fitting_script_load_in_fluid_field:**\
             This fitting script allows you to load in a pre-ran fluid field in combination with a certain network (see the scripts for the pressure drop correction). This script requires you to fit the throat diameter and make an “altered network” as explained in the scripts for the pressure drop correction. To run this fitting script, you need to place the altered network in the folder “Input_networks” and the fluid field (at all velocities you want to run the mass transfer fitting at) in the older “Input_Fluid_field”.
 
@@ -124,14 +124,14 @@ The input parameters used in the algorithm are defined in this script. The input
       3.	The membrane resistance. **NOTE:** The membrane resistivity is computed through Pouillet’s law. Fitting the conductivity then also (partially) fits the membrane resistance.
 
       •       **Fitting_script_OpenPNM:**\
-            This fitting script allows you to load in a network and compute the fluid field within the fitting script with as only input a newtork from the "input" folder. Then, the pressure field is computed using OpenPNM physics (i.e, hydraulic conductance based on shape factors).\
+            This fitting script allows you to load in a network and compute the fluid field within the fitting script with as only input a network from the "input" folder. Then, the pressure field is computed using OpenPNM physics (i.e, hydraulic conductance based on shape factors).\
       •       **Fitting_script:**\
             This fitting script allows you to load in a pre-ran fluid field in combination with a certain network (see the scripts for the pressure drop correction). This script requires you to fit the throat diameter and make an “altered network” as explained in the scripts for the pressure drop correction. To run this fitting script, you need to place the altered network in the folder “Input_networks” and the fluid field (at all velocities you want to run the mass transfer fitting at) in the older “Input_Fluid_field”.
 
 7.    Main Pore Network Model script for simulating the redox flow battery electrodes:\
       These scripts can be used to create a polarization plot and to obtain the contributions of the individual overpotentials, using a velocity independent or velocity dependent mass transfer correlation (see the scripts for the mass coefficient correlation). The pre-exponential and exponential factor of a possible LOCAL mass transfer correlation can be placed in the input dictionary.\
       •	**PNM_main_V3_Final_OpenPNM:**\
-            This script allows you to load in a network and compute the fluid field with as only input a newtork from the "input" folder. Then, the pressure field is computed using OpenPNM physics (i.e, hydraulic conductance based on shape factors).\
+            This script allows you to load in a network and compute the fluid field with as only input a network from the "input" folder. Then, the pressure field is computed using OpenPNM physics (i.e, hydraulic conductance based on shape factors).\
       •	**PNM_main_V3_Final:**\
             This script allows you to load in a pre-ran fluid field in combination with a certain network (see the scripts for the pressure drop correction). This script requires you to fit the throat diameter and make an “altered network” as explained in the scripts for the pressure drop correction. To run this script, you need to place the altered network in the folder “Input_networks” and the fluid field (at all velocities you want to run the mass transfer fitting at) in the older “Input_Fluid_field”.
 
@@ -156,17 +156,17 @@ The input parameters used in the algorithm are defined in this script. The input
 After installing OpenPNM version 3.0.0. and making the required adjustments, the pore network model can be run for the desired operating conditions and network properties, which need to be specified in the scripts.\
 The following properties can be adjusted:\
 •	Electrolyte chemistry: in the inputDict, the chemistry dependent parameters can be changed (e.g., diffusion coefficient, viscosity, concentration).\
-•	Operation conditions: in inputDict, the operating conditions can be changes (e.g., total electrode lenght, membrane properties, cell potential settings).\
+•	Operation conditions: in inputDict, the operating conditions can be changes (e.g., total electrode length, membrane properties, cell potential settings).\
 •	Fitting parameters: in the inputDict, the mass transfer coefficients (C1 and C2) can be defined, which can be obtained from literature or experiments.\
 •	Flow field type: in the scripts, the flow field design can be changed where Flow_field == 0 simulates a flow-through flow field, and Flow_field == 1 an interdigitated flow field.\
 •	Fitting parameters: in the main scripts, the mass transfer coefficient, membrane resistance, and conductivity factors can be altered.\
-•	Pressure drop physics: in the main scripts, you can select wether you want to use OpenPNM physics or physics based on the mechanical energy balance.\
-•	Velocity dependent mass transfer coefficient: in the main manuscript you can select wether you want to use a velocity dependent or independent mass transfer coefficient.\
+•	Pressure drop physics: in the main scripts, you can select whether you want to use OpenPNM physics or physics based on the mechanical energy balance.\
+•	Velocity dependent mass transfer coefficient: in the main manuscript you can select whether you want to use a velocity dependent or independent mass transfer coefficient.\
 •	File name and folder: the file name and folder can be changed in the main scripts.\
 •	Electrode type: the electrode you want to investigate with the pore network model can be loaded in the main scripts using the "input" folder.\
 •	Additional operating conditions and electrolyte parameters: in the main script, the exchange current density and velocity should be changed accordingly.\
 •	Network in series: in the main scripts you can change if you want to simulate a small electrode (the size of the loaded electrode) or if you want to use the network-in-series approach to simulate the size of longer electrode (e.g., as used in the experiments).\
-•	Fitting patameters: for the Pressure_fitting_script and Flow_field_main scripts additional fitting parameters are required as input.
+•	Fitting parameters: for the Pressure_fitting_script and Flow_field_main scripts additional fitting parameters are required as input.
 
 More information regarding these parameters can be found in the publications mentioned under the ‘Cite’ section. **Care must be taken when changing the electrolyte type, as different inputDicts must be used.**\
 **If other extracted networks are used, make sure you double check the xyz coordinates, as they affect the boundary conditions and thus the simulations.**
@@ -179,7 +179,7 @@ Before running the code, the following folders need to be created:\
 •	**plots:** the plots will be outputted in this folder.\
 •	**output:** for saving the output data from the scripts.
 
-**NOTE:** Before starting, carefully check wether you have all the information to run the scripts (input data, networks, fitting parameters required etc.).
+**NOTE:** Before starting, carefully check whether you have all the information to run the scripts (input data, networks, fitting parameters required etc.).
 
 ## Future research directions
 Although effective, the PNM can be further improved to better capture the electrode performance, which is discussed in the following [BLOG](https://maximevdheijden.github.io/2023/11/23/PNMprospects/).
