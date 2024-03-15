@@ -15,7 +15,7 @@ RUN git clone https://github.com/PMEAL/OpenPNM \
     && pip install -e .
     
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements_PNM.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # RUN cp patch/* OpenPNM/ -r
 # Patch required when running pressuredrop fitting scripts only
