@@ -1,4 +1,4 @@
-docrep==0.2.7
+docrep==0.3.2
 chemicals==1.1.4
 pyamg==4.2.3
 thermo==0.2.26
