@@ -5,8 +5,7 @@ The pore network model (PNM) that we developed is an effective computational mod
 PNM-RFB-electrode is an open-source code written in Python using the open-source software OpenPNM.
 
 ## Installation
-The scripts and functions in this folder use OpenPNM version 3.0.0. which can be installed using [OpenPNM documentation](https://openpnm.org/installation.html) and are written for Windows. Before running the code, minor adjustments need to be made to the OpenPNM documentation, which can be found in the “READ ME – OpenPNM changes” file.
-For the installation of OpenPNM from scratch:
+The scripts and functions in this folder use OpenPNM version 3.0.0. which can be installed using [OpenPNM documentation](https://openpnm.org/installation.html) and are written for Windows. Before running the code, minor adjustments need to be made to the OpenPNM documentation, which can be found in the “READ ME – OpenPNM changes” file. For the installation of OpenPNM from scratch follow the steps below:
 
 1.	Download [Anaconda](https://www.anaconda.com/download/) and follow the installment procedure. The open-source Anaconda Distribution is the easiest way to perform Python/R data science and machine learning on Linux, Windows, and Mac OS X. Python is used as the programming language in this project and Spyder can be used as editor.
 
@@ -32,19 +31,21 @@ For the installation of OpenPNM from scratch:
                
             git clone https://github.com/PMEAL/OpenPNM
                   
-      •	Enter the root folder of openPNM by using the "cd OpenPNM" command.\
-      •	Enter the following command and note the space between the dot and e is not a typo:
-            
-            pip install --no-deps -e .
-            
-      •	Enter the following commands to install the openpnm dependencies:
-       
-            conda install --file requirements/conda.txt -c conda-forge
-            pip install -e .
+      •	Enter the root folder of openPNM by using the command:
 
-      •	Switch to version 3.0.0 of OpenPNM using:
+            cd OpenPNM
+
+        •	Switch to version 3.0.0 of OpenPNM using:
 
             git checkout v3.0.0
+
+      •	Enter the following commands to install the openpnm dependencies:
+            
+            pip install -r requirements.txt
+            
+      •	Enter the following command and note the space between the dot and e is not a typo:
+       
+            pip install -e .
 
 4.    You can now run the OpenPNM code files. It could be that you get errors due to missing software packages, the most common ones are discussed below:\
       •	You need to install some dependencies, which can be found in this repository and need to be copied in your OpenPNM folder. The dependencies can be installed using for example pip by entering the following command in AnacondaPrompt:
@@ -55,9 +56,18 @@ For the installation of OpenPNM from scratch:
       •     Boundary conditions issue. When the program can is ran, the following error can pop up: "Another boundary condition was detected in some of the locations received". The solution is to comment out an if-loop. Follow the path 
 OpenPNM->Algorithm->generic_transport and go the function “def_set_BC” and comment out the following if-loop "if np.intersect1d(pores, BC_locs).size".
 
-5.    Before running the code, minor adjustments need to be made to the OpenPNM documentation, which can be found in the “ READ ME – OpePNM changes” file.
+5.    Before running the code, minor adjustments need to be made to the OpenPNM documentation, which can be found in the “ READ ME – OpePNM changes” file or "patch" folder.
 
 6.    Now the codes should work.
+
+## Dockerfile installation
+As an alternative you can run the Dockerfile to run the code, which runs the GA_main_Windows script, by entering the following commands:
+
+```
+docker build -t pnm-rfb-electrode . 
+
+docker run -it pnm-rfb-electrode
+```
 
 ## Documentation
 This repository contains several scripts that will be used when extracting networks, running the code, or for post-processing, including:
